@@ -23,6 +23,33 @@ function getValidMoves(position) {
     .filter(isValidPosition);
 }
 
+function knightMoves(start, end) {
+  const queue = [[start]];
+  const visited = new Set();
+
+  visited.add(start.toString());
+
+  while (queue.length > 0) {
+    const path = queue.shift();
+    const currentPosition = path[path.length - 1];
+
+    if (currentPosition.toString() === end.toString()) {
+      return path;
+    }
+
+    const validMoves = getValidMoves(currentPosition);
+
+    for (const move of validMoves) {
+      const moveKey = move.toString();
+
+      if (!visited.has(moveKey)) {
+        visited.add(moveKey);
+        queue.push([...path, move]);
+      }
+    }
+  }
+}
+
 console.log(isValidPosition([0, 0]));
 console.log(isValidPosition([7, 7]));
 console.log(isValidPosition([8, 2]));
@@ -30,3 +57,7 @@ console.log(isValidPosition([8, 2]));
 console.log(getValidMoves([0, 0]));
 console.log(getValidMoves([3, 3]));
 console.log(getValidMoves([7, 7]));
+
+console.log(knightMoves([0, 0], [1, 2]));
+console.log(knightMoves([0, 0], [3, 3]));
+console.log(knightMoves([3, 3], [0, 0]));
