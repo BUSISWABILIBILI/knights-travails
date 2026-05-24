@@ -52,30 +52,18 @@ function knightMoves(start, end) {
       }
     }
   }
-
-  function printKnightPath(start, end) {
-    const path = knightMoves(start, end);
-    const moves = path.length - 1;
-
-    console.log(`You made it in ${moves} moves! Here's your path:`);
-
-    for (const position of path) {
-      console.log(position);
-    }
-  }
 }
 
-console.log(isValidPosition([0, 0]));
-console.log(isValidPosition([7, 7]));
-console.log(isValidPosition([8, 2]));
+function printKnightPath(start, end) {
+  const path = knightMoves(start, end);
+  const moves = path.length - 1;
 
-console.log(getValidMoves([0, 0]));
-console.log(getValidMoves([3, 3]));
-console.log(getValidMoves([7, 7]));
+  console.log(`You made it in ${moves} moves! Here's your path:`);
 
-console.log(knightMoves([0, 0], [1, 2]));
-console.log(knightMoves([0, 0], [3, 3]));
-console.log(knightMoves([3, 3], [0, 0]));
+  for (const position of path) {
+    console.log(position);
+  }
+}
 
 printKnightPath([0, 0], [1, 2]);
 printKnightPath([0, 0], [3, 3]);
