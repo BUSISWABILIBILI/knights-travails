@@ -24,6 +24,10 @@ function getValidMoves(position) {
 }
 
 function knightMoves(start, end) {
+  if (!isValidPosition(start) || !isValidPosition(end)) {
+    throw new Error("Start and end positions must be between 0 and 7");
+  }
+
   const queue = [[start]];
   const visited = new Set();
 
